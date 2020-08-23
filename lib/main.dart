@@ -28,7 +28,10 @@ class MyApp extends StatelessWidget {
   Widget _buildWithTheme(BuildContext context, ThemeState state) {
     return MaterialApp(
       title: 'Material App',
-      home: HomePage(),
+      home: HomePage(
+        themeData: state.themeData,
+      ),
+      debugShowCheckedModeBanner: false,
       theme: state.themeData,
     );
   }

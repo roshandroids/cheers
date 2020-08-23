@@ -8,19 +8,19 @@ class BeerInitialState extends BeerState {
   List<Object> get props => [];
 }
 
-class BeerLoadingState extends Equatable {
+class BeerLoadingState extends BeerState {
   @override
   List<Object> get props => [];
 }
 
-class BeerLoadedState extends Equatable {
+class BeerLoadedState extends BeerState {
   final List<BeerModel> beers;
   BeerLoadedState({@required this.beers});
   @override
   List<Object> get props => [beers];
 }
 
-class BeerLoadingErrorState extends Equatable {
+class BeerLoadingErrorState extends BeerState {
   final String message;
 
   BeerLoadingErrorState({@required this.message});

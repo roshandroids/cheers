@@ -5,10 +5,10 @@ enum AppTheme {
   GreenDark,
 }
 final appThemeData = {
-  AppTheme.GreenLight:
-      ThemeData(brightness: Brightness.light, primaryColor: Colors.green),
+  AppTheme.GreenLight: ThemeData(
+      brightness: Brightness.light, primaryColor: Colors.blueGrey[600]),
   AppTheme.GreenDark: ThemeData(
     brightness: Brightness.dark,
-    primaryColor: Colors.green[700],
+    primaryColor: Colors.blueGrey[700],
   ),
 };

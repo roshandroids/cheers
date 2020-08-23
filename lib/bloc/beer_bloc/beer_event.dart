@@ -4,6 +4,8 @@ part of 'beer_bloc.dart';
 abstract class BeerEvent extends Equatable {}
 
 class FetchBeerEvent extends BeerEvent {
+  final int page;
+  FetchBeerEvent({@required this.page});
   @override
-  List<Object> get props => [];
+  List<Object> get props => [page];
 }
