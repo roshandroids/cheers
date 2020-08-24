@@ -6,13 +6,13 @@ class BeerModel {
   String description;
   String imageUrl;
   double abv;
-  int ibu;
-  int targetFg;
-  int targetOg;
-  int ebc;
-  int srm;
+  double ibu;
+  double targetFg;
+  double targetOg;
+  double ebc;
+  double srm;
   double ph;
-  int attenuationLevel;
+  double attenuationLevel;
   Volume volume;
   Volume boilVolume;
   Method method;
@@ -51,14 +51,20 @@ class BeerModel {
     firstBrewed = json['first_brewed'];
     description = json['description'];
     imageUrl = json['image_url'];
-    abv = json['abv'];
-    ibu = json['ibu'].toDouble();
-    targetFg = json['target_fg'].toDouble();
-    targetOg = json['target_og'].toDouble();
-    ebc = json['ebc'];
-    srm = json['srm'];
-    ph = json['ph'];
-    attenuationLevel = json['attenuation_level'];
+    abv = json["abv"] is int ? (json['abv'] as int).toDouble() : json['abv'];
+    ibu = json["ibu"] is int ? (json['ibu'] as int).toDouble() : json['ibu'];
+    targetFg = json["targetFg"] is int
+        ? (json['targetFg'] as int).toDouble()
+        : json['targetFg'];
+    targetOg = json["targetOg"] is int
+        ? (json['targetOg'] as int).toDouble()
+        : json['targetOg'];
+    ebc = json["ebc"] is int ? (json['ebc'] as int).toDouble() : json['ebc'];
+    srm = json["srm"] is int ? (json['srm'] as int).toDouble() : json['srm'];
+    ph = json["ph"] is int ? (json['ph'] as int).toDouble() : json['ph'];
+    attenuationLevel = json["attenuationLevel"] is int
+        ? (json['attenuationLevel'] as int).toDouble()
+        : json['attenuationLevel'];
     volume =
         json['volume'] != null ? new Volume.fromJson(json['volume']) : null;
     boilVolume = json['boil_volume'] != null
@@ -110,13 +116,15 @@ class BeerModel {
 }
 
 class Volume {
-  int value;
+  double value;
   String unit;
 
   Volume({this.value, this.unit});
 
   Volume.fromJson(Map<String, dynamic> json) {
-    value = json['value'];
+    value = json["value"] is int
+        ? (json['value'] as int).toDouble()
+        : json['value'];
     unit = json['unit'];
   }
 
@@ -131,7 +139,7 @@ class Volume {
 class Method {
   List<MashTemp> mashTemp;
   Fermentation fermentation;
-  Null twist;
+  String twist;
 
   Method({this.mashTemp, this.fermentation, this.twist});
 
@@ -163,13 +171,14 @@ class Method {
 
 class MashTemp {
   Volume temp;
-  int duration;
+  double duration;
 
   MashTemp({this.temp, this.duration});
 
   MashTemp.fromJson(Map<String, dynamic> json) {
     temp = json['temp'] != null ? new Volume.fromJson(json['temp']) : null;
-    duration = json['duration'];
+    duration =
+        json["abv"] is int ? (json['abv'] as int).toDouble() : json['abv'];
   }
 
   Map<String, dynamic> toJson() {
@@ -265,7 +274,9 @@ class Amount {
   Amount({this.value, this.unit});
 
   Amount.fromJson(Map<String, dynamic> json) {
-    value = json['value'];
+    value = json["value"] is int
+        ? (json['value'] as int).toDouble()
+        : json['value'];
     unit = json['unit'];
   }
 
