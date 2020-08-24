@@ -1,3 +1,4 @@
+import 'package:cheers/Services/di.dart';
 import 'package:cheers/bloc/theme_bloc/theme_bloc.dart';
 import 'package:cheers/bloc/theme_bloc/theme_state.dart';
 import 'package:cheers/data/theme/app_themes.dart';
@@ -9,6 +10,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HydratedBloc.storage = await HydratedStorage.build();
+  await initDI();
   runApp(MyApp());
 }
 

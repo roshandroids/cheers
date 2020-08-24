@@ -52,9 +52,9 @@ class BeerModel {
     description = json['description'];
     imageUrl = json['image_url'];
     abv = json['abv'];
-    ibu = json['ibu'];
-    targetFg = json['target_fg'];
-    targetOg = json['target_og'];
+    ibu = json['ibu'].toDouble();
+    targetFg = json['target_fg'].toDouble();
+    targetOg = json['target_og'].toDouble();
     ebc = json['ebc'];
     srm = json['srm'];
     ph = json['ph'];
@@ -84,8 +84,8 @@ class BeerModel {
     data['image_url'] = this.imageUrl;
     data['abv'] = this.abv;
     data['ibu'] = this.ibu;
-    data['target_fg'] = this.targetFg;
-    data['target_og'] = this.targetOg;
+    data['target_fg'] = this.targetFg.toDouble();
+    data['target_og'] = this.targetOg.toDouble();
     data['ebc'] = this.ebc;
     data['srm'] = this.srm;
     data['ph'] = this.ph;
@@ -122,7 +122,7 @@ class Volume {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['value'] = this.value;
+    data['value'] = this.value.toDouble();
     data['unit'] = this.unit;
     return data;
   }

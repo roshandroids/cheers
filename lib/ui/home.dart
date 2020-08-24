@@ -52,7 +52,6 @@ class _HomePageState extends State<HomePage> {
                       ? true
                       : false,
                   onChanged: (value) {
-                    print(value);
                     setState(() {
                       (value)
                           ? BlocProvider.of<ThemeBloc>(context)
@@ -118,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           page = item + 1;
                         });
-                        print(item + 1);
+
                         getQuotes(item + 1);
                       },
                       child: Container(
@@ -138,7 +137,9 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           (item + 1).toString(),
                           style: GoogleFonts.lato(
-                              fontSize: 16, fontWeight: FontWeight.w600),
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600),
                         ),
                       ),
                     );
@@ -214,29 +215,30 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget loadArticles(List<BeerModel> quoteList) {
+  Widget loadArticles(List<BeerModel> beerList) {
     return ListView.builder(
-        shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        itemCount: quoteList.length,
-        itemBuilder: (context, item) {
-          return Container(
-            margin: EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 5.0,
-                  color: Color.fromRGBO(0, 0, 0, 0.5),
-                ),
-              ],
-            ),
-            child: ListTile(
-              onTap: () {},
-              title: Text(quoteList[item].name),
-            ),
-          );
-        });
+      shrinkWrap: true,
+      physics: BouncingScrollPhysics(),
+      itemCount: beerList.length,
+      itemBuilder: (context, item) {
+        return Container(
+          margin: EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 5.0,
+                color: Color.fromRGBO(0, 0, 0, 0.5),
+              ),
+            ],
+          ),
+          child: ListTile(
+            onTap: () {},
+            title: Text(beerList[item].name),
+          ),
+        );
+      },
+    );
   }
 }
