@@ -3,6 +3,7 @@ import 'package:cheers/bloc/theme_bloc/theme_bloc.dart';
 import 'package:cheers/bloc/theme_bloc/theme_state.dart';
 import 'package:cheers/data/theme/app_themes.dart';
 import 'package:cheers/ui/home.dart';
+import 'package:cheers/ui/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -28,13 +29,13 @@ class MyApp extends StatelessWidget {
   }
 
   Widget _buildWithTheme(BuildContext context, ThemeState state) {
-    return MaterialApp(
-      title: 'Material App',
-      home: HomePage(
-        themeData: state.themeData,
-      ),
-      debugShowCheckedModeBanner: false,
-      theme: state.themeData,
-    );
+    return MaterialApp(title: 'Material App', home: Login());
+
+    //   HomePage(
+    //     themeData: state.themeData,
+    //   ),
+    //   debugShowCheckedModeBanner: false,
+    //   theme: state.themeData,
+    // );
   }
 }
